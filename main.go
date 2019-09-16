@@ -71,7 +71,7 @@ func txtWorker(id int, fileChan chan os.FileInfo) {
 			continue
 		}
 		content := string(data)
-		pat := "[0-9]+.[0-9]+" //正则
+		pat := `\([^(]+\)|\(` //正则
 		re, _ := regexp.Compile(pat)
 		//将匹配到的部分替换为"##.#"
 		content = re.ReplaceAllString(content, "")
